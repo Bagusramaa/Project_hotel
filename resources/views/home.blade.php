@@ -1,4 +1,12 @@
-@extends('base') 
+@extends('base')
+@section('contentheader')
+<li class="nav-item d-none d-sm-inline-block">
+    <a href="/home" class="nav-link">Home</a>
+</li>
+<li class="nav-item d-none d-sm-inline-block">
+    <a href="/Contact" class="nav-link">Contact</a>
+</li>
+@section
 @section('content')
 <class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -51,8 +59,7 @@
                         <h5 class="card-title">Card title</h5>
 
                         <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
+                        Text.
                         </p>
 
                         <a href="#" class="card-link">Card link</a>
@@ -65,8 +72,7 @@
                         <h5 class="card-title">Card title</h5>
 
                         <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
+                        Text
                         </p>
                         <a href="#" class="card-link">Card link</a>
                         <a href="#" class="card-link">Another link</a>
@@ -74,7 +80,7 @@
                 </div><!-- /.card -->
             </div>
             <!-- /.col-md-6 -->
-            <div class="col-lg-6">
+            <!-- <div class="col-lg-6">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="m-0">Featured</h5>
@@ -82,7 +88,9 @@
                     <div class="card-body">
                         <h6 class="card-title">Special title treatment</h6>
 
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <p class="card-text">
+                            Text.
+                        </p>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
@@ -94,11 +102,14 @@
                     <div class="card-body">
                         <h6 class="card-title">Special title treatment</h6>
 
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <p class="card-text">
+                            Text.
+                        </p>
+                        
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- /.col-md-6 -->
             </div>
             <!-- /.row -->
@@ -108,15 +119,9 @@
         
     </div>
     <!-- /.content-wrapper -->
-    <a href="/logout"><button type="submit" class="btn btn-primary">Log out</button></a>
+    
     <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-        <div class="p-3">
-        <h5>Title</h5>
-        <p>Sidebar content</p>
-        </div>
-    </aside>
+
     <!-- /.control-sidebar -->
 
     <!-- Main Footer -->

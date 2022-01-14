@@ -72,3 +72,13 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+    <div class="p-3">
+    <h5>Account, {{ Session::get('name') }}!</h5>
+    <p class="text-center"><a href="/logout"><button type="submit" class="btn btn-primary">Log out</button></a></p>
+    </div>
+</aside>
+<!-- /.control-sidebar -->
