@@ -1,4 +1,15 @@
 @extends('base')
+@section('contentheader')
+<li class="nav-item d-none d-sm-inline-block">
+    <a href="/login" class="nav-link">Login</a>
+</li>
+<li class="nav-item d-none d-sm-inline-block">
+    <a href="/register" class="nav-link">Register</a>
+</li>
+<li class="nav-item d-none d-sm-inline-block">
+    <a href="/contact" class="nav-link">Contact</a>
+</li>
+@endsection
 @section('content')
 <div class="content-wrapper">
     <div class="container mt-5">
