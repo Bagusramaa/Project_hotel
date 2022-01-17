@@ -6,7 +6,7 @@
 <li class="nav-item d-none d-sm-inline-block">
     <a href="/Contact" class="nav-link">Contact</a>
 </li>
-@section
+@endsection
 @section('content')
 <class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -22,12 +22,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Starter Page</h1>
+                <h1 class="m-0">Admin Page</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Starter Page</li>
+                <li class="breadcrumb-item active">Admin Page</li>
                 </ol>
             </div><!-- /.col -->
             </div><!-- /.row -->
@@ -40,8 +40,7 @@
         <div class="container-fluid">
             <div class="row">
             <div class="col-lg-6">
-                <h1 class="mb-4">Hello, {{ Session::get('name') }}!</h1>
-
+                
                 @if (session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
@@ -56,26 +55,25 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-
+                        <h1 class="mb-4 card-title">Welcome Back!</h1>
                         <p class="card-text">
-                        Text.
+                        This is Admin Page
                         </p>
-
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
                     </div>
                 </div>
 
                 <div class="card card-primary card-outline">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <h5 class="card-title">Page List</h5>
 
                         <p class="card-text">
-                        Text
+                        What pages you want to see?
                         </p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                        <a href="{{url('/home/roomtype')}}" class="card-link">RoomTypes</a>
+                        <a href="{{url('/home/rooms')}}" class="card-link">Rooms</a>
+                        <a href="{{url('/home/customer')}}" class="card-link">Customers</a>
+                        <a href="{{url('/home/department')}}" class="card-link">Departments</a>
+                        <a href="{{url('/home/staff')}}" class="card-link">Staff</a>
                     </div>
                 </div><!-- /.card -->
             </div>
