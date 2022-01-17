@@ -4,7 +4,7 @@
     <a href="/home" class="nav-link">Home</a>
 </li>
 <li class="nav-item d-none d-sm-inline-block">
-    <a href="/Contact" class="nav-link">Contact</a>
+    <a href="/contact" class="nav-link">Contact</a>
 </li>
 @endsection
 @section('content')
@@ -20,7 +20,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/home">Home</a></li>
-              <li class="breadcrumb-item active">Add RoomType</li>
+              <li class="breadcrumb-item active">RoomType</li>
             </ol>
           </div>
         </div>
@@ -34,7 +34,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Add RoomType</h3>
+                <h3 class="card-title">RoomType</h3>
                 <h3><a href="{{url('/home/roomtype')}}" class="float-right btn btn-success btn-sm">View All</a></h3>
               </div>
               <!-- /.card-header -->
