@@ -4,7 +4,7 @@
     <a href="/home" class="nav-link">Home</a>
 </li>
 <li class="nav-item d-none d-sm-inline-block">
-    <a href="/Contact" class="nav-link">Contact</a>
+    <a href="/contact" class="nav-link">Contact</a>
 </li>
 @endsection
 @section('content')
@@ -58,6 +58,7 @@
                         <td>{{$d->id}}</td>
                         <td>{{$d->full_name}}</td>
                         <td>{{$d->department->title}}
+                        <td>
                           <a href="{{url('/home/staff/'.$d->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                           <a href="{{url('/home/staff/'.$d->id).'/edit'}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                           <a onclick="return confirm('Are you sure to delete this data?')" href="{{url('/home/staff/'.$d->id).'/delete'}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>

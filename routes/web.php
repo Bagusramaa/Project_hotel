@@ -13,7 +13,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\StaffDepartment;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\BookingController;
-
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\BerandaController;
 
 /*
@@ -28,6 +28,7 @@ use App\Http\Controllers\BerandaController;
 */
 
 Route::get('/',[BerandaController::class, 'beranda']);
+Route::get('/contact',[PageController::class, 'contact']);
 
 Route::get('/hello', [HelloController::class, 'index']);
 

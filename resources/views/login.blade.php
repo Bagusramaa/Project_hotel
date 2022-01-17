@@ -22,21 +22,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    @if(Session::has('customerlogin'))
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a href="/logout" class="nav-link">Logout</a>        
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-sm btn-primary" aria-current="page" href="{{url('booking')}}">Booking</a>
-                    </li>
-                    @else
                     <li class="nav-item d-none d-sm-inline-block">
                         <a href="/login" class="nav-link">Login</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
                         <a href="/register" class="nav-link">Register</a>
                     </li>
-                    @endif
                     <li class="nav-item">
                     <a class="nav-link" href="/contact">Contact</a>
                     </li>

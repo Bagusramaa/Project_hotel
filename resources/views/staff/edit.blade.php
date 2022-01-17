@@ -4,7 +4,7 @@
     <a href="/home" class="nav-link">Home</a>
 </li>
 <li class="nav-item d-none d-sm-inline-block">
-    <a href="/Contact" class="nav-link">Contact</a>
+    <a href="/contact" class="nav-link">Contact</a>
 </li>
 @endsection
 @section('content')
@@ -20,7 +20,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/home">Home</a></li>
-              <li class="breadcrumb-item active">Add Staff</li>
+              <li class="breadcrumb-item active">Staff</li>
             </ol>
           </div>
         </div>

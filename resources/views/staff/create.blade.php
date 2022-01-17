@@ -4,7 +4,7 @@
     <a href="/home" class="nav-link">Home</a>
 </li>
 <li class="nav-item d-none d-sm-inline-block">
-    <a href="/Contact" class="nav-link">Contact</a>
+    <a href="/contact" class="nav-link">Contact</a>
 </li>
 @endsection
 @section('content')
@@ -61,7 +61,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>Full Bio</th>
+                            <th>Bio</th>
                             <td>
                               <textarea class="form-control" name="bio"></textarea>
                             </td>

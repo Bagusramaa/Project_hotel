@@ -4,7 +4,7 @@
     <a href="/home" class="nav-link">Home</a>
 </li>
 <li class="nav-item d-none d-sm-inline-block">
-    <a href="/Contact" class="nav-link">Contact</a>
+    <a href="/contact" class="nav-link">Contact</a>
 </li>
 @endsection
 @section('content')
@@ -15,12 +15,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Customers</h1>
+            <h1>Bookings</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/home">Home</a></li>
-              <li class="breadcrumb-item active">Customers</li>
+              <li class="breadcrumb-item active">Booking</li>
             </ol>
           </div>
         </div>
@@ -34,8 +34,8 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Customer</h3>
-                <h3><a href="{{url('/home/customer/create')}}" class="float-right btn btn-success btn-sm">Add New +</a></h3>
+                <h3 class="card-title">All Bookings</h3>
+                <h3><a href="{{url('/home/booking/create')}}" class="float-right btn btn-success btn-sm">Add New +</a></h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -46,33 +46,33 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Fullname</th>
-                      <th>Email</th>
-                      <th>Action</th>
+                      <th>Customer</th>
+                      <th>Room No.</th>
+                      <th>Room Type</th>                      
+                      <th>Checkin Date</th>
+                      <th>Checkout Date</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @if($data)
-                      @foreach($data as $d)
+                      @foreach($data as $booking)
                       <tr>
-                      <td>{{$d->id}}</td>
-                        <td>{{$d->full_name}}</td>
-                        <td>{{$d->email}}</td>
-                        <td>
-                          <a href="{{url('/home/customer/'.$d->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
-                          <a href="{{url('/home/customer/'.$d->id).'/edit'}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                          <a onclick="return confirm('Are you sure to delete this data?')" href="{{url('/home/customer/'.$d->id).'/delete'}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                        </td>
+                        <td>{{$booking->id}}</td>
+                        <td>{{$booking->customer->full_name}}</td>
+                        <td>{{$booking->room->title}}</td>
+                        <td>{{$booking->room->Roomtype->title}}</td>
+                        <td>{{$booking->checkin_date}}</td>
+                        <td>{{$booking->checkout_date}}</td>
                       </tr>
                       @endforeach
-                    @endif
                   </tbody>
                   <tfoot>
                     <tr>
                       <th>#</th>
-                      <th>Fullname</th>
-                      <th>Email</th>
-                      <th>Action</th>
+                      <th>Customer</th>
+                      <th>Room No.</th>
+                      <th>Room Type</th>
+                      <th>Checkin Date</th>
+                      <th>Checkout Date</th>
                     </tr>
                   </tfoot>
                 </table>
