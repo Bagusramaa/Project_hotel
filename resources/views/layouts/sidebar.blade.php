@@ -34,38 +34,146 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
             with font-awesome or any other icon font library -->
-        <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+        <li class="nav-header">Pages</li>
+        <li class="nav-item">
+            <a href="#" class="nav-link active @if(!request()->is('/home/roomtype*')) collapsed @endif">
+            <i class="nav-icon fas fa-fw fa-table"></i>
             <p>
-                Starter Pages
+                Roomtype
                 <i class="right fas fa-angle-left"></i>
             </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview @if(request()->is('/home/roomtype*')) show @endif">
             <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="{{url('/home/roomtype/create')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Active Page</p>
+                <p>Add New</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{url('/home/roomtype')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Inactive Page</p>
+                <p>View All</p>
                 </a>
             </li>
             </ul>
         </li>
+
+        <!-- RoomMaster -->
         <li class="nav-item">
-            <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
+            <a href="#" class="nav-link active @if(!request()->is('/home/rooms*')) collapsed @endif" data-toggle="collaspse" data-target="#roomMaster">
+            <i class="nav-icon fas fa-fw fa-box"></i>
             <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
+                Room
+                <i class="right fas fa-angle-left"></i>
             </p>
             </a>
+            <ul id="roomMaster" class="nav nav-treeview @if(request()->is('/home/rooms*')) show @endif">
+            <li class="nav-item">
+                <a href="{{url('/home/rooms/create')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add New</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url('/home/rooms')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>View All</p>
+                </a>
+            </li>
+            </ul>
         </li>
+
+        <!-- CustomerMaster -->
+        <li class="nav-item">
+            <a href="#" class="nav-link active @if(!request()->is('/home/customer*')) collapsed @endif" data-toggle="collaspse" data-target="#CustomerMaster">
+            <i class="nav-icon fas fa-fw fa-users"></i>
+            <p>
+            Customer
+                <i class="right fas fa-angle-left"></i>
+            </p>
+            </a>
+            <ul id="CustomerMaster" class="nav nav-treeview @if(request()->is('/home/customer*')) show @endif">
+            <li class="nav-item">
+                <a href="{{url('/home/customer/create')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add New</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url('/home/customer')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>View All</p>
+                </a>
+            </li>
+            </ul>
+        </li>
+
+        <!-- DepartmentMaster -->
+        <li class="nav-item">
+            <a href="#" class="nav-link active @if(!request()->is('/home/department*')) collapsed @endif" data-toggle="collaspse" data-target="#DepartmentMaster">
+            <i class="nav-icon fas fa-fw fa-users"></i>
+            <p>
+            Department
+                <i class="right fas fa-angle-left"></i>
+            </p>
+            </a>
+            <ul id="DepartmentMaster" class="nav nav-treeview @if(request()->is('/home/department*')) show @endif">
+            <li class="nav-item">
+                <a href="{{url('/home/department/create')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add New</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url('/home/department')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>View All</p>
+                </a>
+            </li>
+            </ul>
+        </li>
+
+        <!-- StaffMaster -->
+        <li class="nav-item">
+            <a href="#" class="nav-link active @if(!request()->is('/home/staff*')) collapsed @endif" data-toggle="collaspse" data-target="#StaffMaster">
+            <i class="nav-icon fas fa-fw fa-users"></i>
+            <p>
+            Staff
+                <i class="right fas fa-angle-left"></i>
+            </p>
+            </a>
+            <ul id="StaffMaster" class="nav nav-treeview @if(request()->is('/home/staff*')) show @endif">
+            <li class="nav-item">
+                <a href="{{url('/home/staff/create')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add New</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url('/home/staff')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>View All</p>
+                </a>
+            </li>
+            </ul>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{url('home/booking/create')}}">
+                <i class="fas fa-fw fa-hotel"></i>
+                <span>Booking</span>
+            </a>
+        </li>
+
+        <!-- logout -->
+        <li class="nav-item">
+            <a class="nav-link" href="{{url('home/adminlogin')}}">
+                <i class="fas fa-fw fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </li>
+
         </ul>
     </nav>
     <!-- /.sidebar-menu -->
@@ -77,8 +185,8 @@
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
     <div class="p-3">
-    <h5>Account, {{ Session::get('name') }}!</h5>
+    <!-- <h5>Account, {{ Session::get('name') }}!</h5>
     <p class="text-center"><a href="/logout"><button type="submit" class="btn btn-primary">Log out</button></a></p>
-    </div>
+    </div> -->
 </aside>
 <!-- /.control-sidebar -->
