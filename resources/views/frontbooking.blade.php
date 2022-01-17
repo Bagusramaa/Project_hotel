@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hotel | Register</title>
+    <title>Home Page</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="{{asset('Admin/plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('Admin/dist/css/adminlte.min.css')}}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -45,58 +49,60 @@
         </div>
     </nav>
 
-        <div class="content">
-            <div class="container mt-5">
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <h3 class="mb-5">Register</h3>
+    <div class="content">
+        <div class="container mt-5">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3 class="mb-5">Room Booking</h3>
+                    <div class="card-body">
+                        @if($errors->any())
+                            @foreach($errors->all() as $error)
+                                <p class="alert alert-danger">{{$error}}</p>
+                            @endforeach
+                        @endif
 
                         @if(Session::has('success'))
-                           <p class="alert alert-success">{{session('success')}}</p>
+                        <p class="alert alert-success">{{session('success')}}</p>
                         @endif
-
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-
-                        <form action="{{url('home/customer')}}" method="POST">
-                            @method("POST")
+                        <form method="post" enctype="multipart/form-data" action="{{url('/home/booking')}}">
                             @csrf
-                            <table class="table table-bordered">
+                            <table id="example1" class="table table-bordered table-hover">
+                                
                                 <tr>
-                                    <th>Full Name<span class="text-danger">*</span></th>
-                                    <td><input required type="text" class="form-control" name="full_name"></td>
+                                    <th>CheckIn Date<span class="text-danger">*</span></th>
+                                    <td><input name="checkin_date" type="date" class ="form-control checkin-date" /></td>
                                 </tr>
                                 <tr>
-                                    <th>Email<span class="text-danger">*</span</th>
-                                    <td><input required type="email" class="form-control" name="email"></td>
+                                    <th>CheckOut Date<span class="text-danger">*</span></th>
+                                    <td><input name="checkout_date" type="date" class ="form-control" /></td>
                                 </tr>
                                 <tr>
-                                    <th>Password<span class="text-danger">*</span</th>
-                                    <td><input required type="password" class="form-control" name="password"></td>
+                                    <th>Available Rooms<span class="text-danger">*</span></th>
+                                    <td>
+                                    <select class="form-control room-list" name="room_id">
+                                        
+                                        <option></option>
+                                    </select>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <th>Address<span class="text-danger">*</span</th>
-                                    <td><input type="text" class="form-control" name="address"></td>
+                                    <th>Total People<span class="text-danger">*</span></th>
+                                    <td><input name="total_people" type="text" class="form-control" /></td>
                                 </tr>
                                 <tr>
-                                    <input type="hidden" name="ref" value="front" />
-                                    <td colspan="2"><input type="submit" class="btn btn-primary"></td>
+                                    <td colspan = "2">
+                                        <input type="hidden" name="customer_id" value= "{{session('data')[0]->id}}"/>
+                                        <input type="hidden" name="ref" value= "front"/>
+                                        <input type="submit" class="btn btn-primary" />
+                                    </td>
                                 </tr>
                             </table>
                         </form>
-                            <h></h>    
-                            <p class="text-center">Sudah Mempunyai Akun? Kembali ke Halaman <a href="/login">Login</a>!</p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 <!--    <footer class="main-footer" width="100%">
 
         <div class="float-right d-none d-sm-inline">
@@ -121,5 +127,27 @@
 <!-- AdminLTE App -->
 <script src="{{asset('Admin/dist/js/adminlte.min.js')}}"></script>
 
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".checkin-date").on('blur', function(){
+      var _checkindate=$(this).val();
+      // Ajax
+      $.ajax({
+        url:"{{url('home/booking')}}/available-rooms/"+_checkindate,
+        dataType:'json',
+        beforeSend:function(){
+          $(".room-list").html('<option>--- Loading ---</option>');
+        },
+        success:function(res){
+          var _html='';
+          $.each(res.data,function(index, row){
+            _html+='<option value ="'+row.id+'">'+row.title+'</option>';
+          });
+          $(".room-list").html(_html);
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>

@@ -15,12 +15,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>RoomTypes</h1>
+            <h1>Departments</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/home">Home</a></li>
-              <li class="breadcrumb-item active">RoomTypes</li>
+              <li class="breadcrumb-item active">Department</li>
             </ol>
           </div>
         </div>
@@ -34,8 +34,8 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">RoomTypes</h3>
-                <h3><a href="{{url('/home/roomtype/create')}}" class="float-right btn btn-success btn-sm">Add New +</a></h3>
+                <h3 class="card-title">Departments</h3>
+                <h3><a href="{{url('/home/department/create')}}" class="float-right btn btn-success btn-sm">Add New +</a></h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -47,7 +47,6 @@
                     <tr>
                       <th>#</th>
                       <th>Title</th>
-                      <th>Price</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -57,11 +56,10 @@
                       <tr>
                         <td>{{$d->id}}</td>
                         <td>{{$d->title}}</td>
-                        <td>{{$d->price}}</td>
                         <td>
-                          <a href="{{url('/home/roomtype/'.$d->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
-                          <a href="{{url('/home/roomtype/'.$d->id).'/edit'}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                          <a onclick="return confirm('Are you sure to delete this data?')" href="{{url('/home/roomtype/'.$d->id).'/delete'}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                          <a href="{{url('/home/department/'.$d->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                          <a href="{{url('/home/department/'.$d->id).'/edit'}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                          <a onclick="return confirm('Are you sure to delete this data?')" href="{{url('/home/department/'.$d->id).'/delete'}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                         </td>
                       </tr>
                       @endforeach
@@ -71,7 +69,6 @@
                   <tr>
                       <th>#</th>
                       <th>Title</th>
-                      <th>Price</th>
                       <th>Action</th>
                     </tr>
                   </tfoot>

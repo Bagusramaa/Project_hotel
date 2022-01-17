@@ -3,25 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\RoomType;
+use App\Models\Room;
 
-class HelloController extends Controller
+class RoomController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request) 
+    public function index()
     {
-            $name = $request->input('name');
-
-        if (!$name) {
-            $name = "World";
-        }
-
-        return view('hello', [
-            "name" => $name
-        ]);
+        $data=Room::all();
+        return view ('room.index',['data'=>$data]);
     }
 
     /**
@@ -31,7 +26,8 @@ class HelloController extends Controller
      */
     public function create()
     {
-        //
+        $roomtypes=RoomType::all();
+        return view ('room.create', ['roomtypes'=>$roomtypes]);
     }
 
     /**
@@ -42,7 +38,12 @@ class HelloController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=new Room;
+        $data->room_type_id=$request->rt_id;
+        $data->title=$request->title;
+        $data->save();
+
+        return redirect('/home/rooms/create')->with('success','Data has been added');
     }
 
     /**
@@ -53,7 +54,8 @@ class HelloController extends Controller
      */
     public function show($id)
     {
-        //
+        $data=Room::find($id);
+        return view ('room.show',['data'=>$data]);
     }
 
     /**
@@ -64,7 +66,9 @@ class HelloController extends Controller
      */
     public function edit($id)
     {
-        //
+        $roomtypes=RoomType::all();
+        $data=Room::find($id);
+        return view ('room.edit',['data'=>$data, 'roomtypes'=>$roomtypes]);
     }
 
     /**
@@ -76,7 +80,12 @@ class HelloController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data=Room::find($id);
+        $data->room_type_id=$request->rt_id;
+        $data->title=$request->title;
+        $data->save();
+
+        return redirect('/home/rooms/'.$id.'/edit')->with('success','Data has been updated');
     }
 
     /**
@@ -87,6 +96,7 @@ class HelloController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Room::where('id', $id)->delete();
+        return redirect('/home/rooms')->with('success','Data has been deleted');
     }
 }
